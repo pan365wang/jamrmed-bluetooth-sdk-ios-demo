@@ -1,0 +1,6 @@
+framework module BPMBluetooth {
+  umbrella header "BPMBluetooth.h"
+  export *
+
+  module * { export * }
+}
