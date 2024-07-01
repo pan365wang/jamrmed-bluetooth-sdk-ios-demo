@@ -5,6 +5,7 @@
 #import "HistoryViewController.h"
 #import "TCDatePickerView.h"
 #import "LPPickView.h"
+#import "SPDateTimePickerView.h"
 
 #define kScreenHeight     [UIScreen mainScreen].bounds.size.height
 #define kScreenWidth      [UIScreen mainScreen].bounds.size.width
@@ -12,7 +13,7 @@
 #define kIs_iphone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define kIs_iPhoneX kScreenWidth >=375.0f && kScreenHeight >=812.0f&& kIs_iphone
 
-@interface ViewController2 ()<LSBluetoothManagerDelegate,DateTimePickerViewDelegate>
+@interface ViewController2 ()<LSBluetoothManagerDelegate,DateTimePickerViewDelegate,SPDateTimePickerViewDelegate>
 {
     LSBluetoothManager *manager;
     CBPeripheral * connectedperipheral;
@@ -73,8 +74,7 @@
                      @"Obtain historical data",
                      @"Delete historical data",
                      @"Set reminders",
-                     @"Delete reminder",
-                     @"Interrupt History"];
+                     @"Delete reminder"];
     
     if (self.blueToothModel.peripheral.state == CBPeripheralStateConnected) {
         for (int i=0; i<arr.count; i++) {
@@ -170,12 +170,18 @@
 
 //发送时间
 - (void)setTime:(UIButton *)sender {
-    TCDatePickerView *picker = [[TCDatePickerView alloc] init];
-    picker.delegate = self;
-    picker.titleL.text = @"Sending time";
-    picker.pickerViewMode = DatePickerViewDateTimeMode;
-    [self.view addSubview:picker];
-    [picker showDateTimePickerView];
+    SPDateTimePickerView *pickerView = [[SPDateTimePickerView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,  [UIScreen mainScreen].bounds.size.height)];
+    pickerView.pickerViewMode = 5;
+    pickerView.delegate = self;
+    pickerView.title = @"时间选择器";
+    [self.view addSubview:pickerView];
+    [pickerView showDateTimePickerView];
+//    TCDatePickerView *picker = [[TCDatePickerView alloc] init];
+//    picker.delegate = self;
+//    picker.titleL.text = @"Sending time";
+//    picker.pickerViewMode = DatePickerViewDateTimeMode;
+//    [self.view addSubview:picker];
+//    [picker showDateTimePickerView];
     selIndex = 3;
 }
 
@@ -243,12 +249,6 @@
 - (void)clearData:(UIButton *)sender {
     selIndex = 10;
     [manager cancelRemindTask];
-}
-
-//APP主动发送历史数据中断指令
-- (void)interruptHistory:(UIButton *)sender {
-    selIndex = 11;
-    [manager InterruptHistory];
 }
 
 
@@ -432,25 +432,28 @@
     [self createView];
 }
 
+//选择时间后的回调
+
+#pragma mark - SPDateTimePickerViewDelegate
+
+- (void)didClickFinishDateTimePickerView:(NSString *)date {
+
+    NSString *dateTime = date;
+    [manager sendDate:dateTime];
+}
 
 #pragma mark -- DateTimePickerViewDelegate
-- (void)didClickFinishDateTimePickerView:(NSString *)date{
-    if (selIndex == 3) {
-        NSString *dateTime = date;
-        [manager sendDate:dateTime];
+- (void)didClickFinishDateTimePickerView2:(NSString *)date{
+    if (selIndex == 100) {
+        startTime = date;
+        [self selTime2];
+    } else if (selIndex == 200) {
+        endTime = date;
+        [self selTime3];
     } else {
-        if (selIndex == 100) {
-            startTime = date;
-            [self selTime2];
-        } else if (selIndex == 200) {
-            endTime = date;
-            [self selTime3];
-        } else {
-            hourMin = date;
-            [manager setRemindTask:startTime endTime:endTime hourTime:hourMin];
-        }
+        hourMin = date;
+        [manager setRemindTask:startTime endTime:endTime hourTime:hourMin];
     }
-
 }
 
 //发送时间

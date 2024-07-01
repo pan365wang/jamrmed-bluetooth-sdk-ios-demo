@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E03CB682C3259DB00CA9485 /* SPDateTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E03CB672C3259DB00CA9485 /* SPDateTimePickerView.m */; };
 		4EDE49772C1C3A8600C54D06 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE49762C1C3A8600C54D06 /* UIView+Toast.m */; };
 		4EDE497A2C1C42BF00C54D06 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE49792C1C42BF00C54D06 /* HistoryViewController.m */; };
 		4EDE49832C1D7FA100C54D06 /* TCDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE49822C1D7FA100C54D06 /* TCDatePickerView.m */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E03CB662C3259DB00CA9485 /* SPDateTimePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPDateTimePickerView.h; sourceTree = "<group>"; };
+		4E03CB672C3259DB00CA9485 /* SPDateTimePickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPDateTimePickerView.m; sourceTree = "<group>"; };
 		4EDE49752C1C3A8600C54D06 /* UIView+Toast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		4EDE49762C1C3A8600C54D06 /* UIView+Toast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		4EDE49782C1C42BF00C54D06 /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				CA74FA14213E0DBF00E5C889 /* LaunchScreen.storyboard */,
 				CA74FA17213E0DBF00E5C889 /* Info.plist */,
 				CA74FA18213E0DBF00E5C889 /* main.m */,
+				4E03CB662C3259DB00CA9485 /* SPDateTimePickerView.h */,
+				4E03CB672C3259DB00CA9485 /* SPDateTimePickerView.m */,
 			);
 			path = BluetoothDemo;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				4EDE497A2C1C42BF00C54D06 /* HistoryViewController.m in Sources */,
 				CA74FA19213E0DBF00E5C889 /* main.m in Sources */,
 				CA74FA33213E679900E5C889 /* ViewController2.m in Sources */,
+				4E03CB682C3259DB00CA9485 /* SPDateTimePickerView.m in Sources */,
 				4EDE49AA2C1FCC1100C54D06 /* LPPickView.m in Sources */,
 				CA74FA0B213E0DBE00E5C889 /* AppDelegate.m in Sources */,
 			);

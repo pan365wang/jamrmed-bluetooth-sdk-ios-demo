@@ -903,8 +903,8 @@
 {
     
 
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didClickFinishDateTimePickerView:)]) {
-        [self.delegate didClickFinishDateTimePickerView:_string];
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didClickFinishDateTimePickerView2:)]) {
+        [self.delegate didClickFinishDateTimePickerView2:_string];
 
     }
 

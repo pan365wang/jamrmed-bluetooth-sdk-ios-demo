@@ -2,6 +2,7 @@
 #import "ViewController.h"
 #import <BPMBluetooth/LSBluetoothManager.h>
 #import "ViewController2.h"
+#import "SPDateTimePickerView.h"
 
 #define kScreenHeight     [UIScreen mainScreen].bounds.size.height
 #define kScreenWidth      [UIScreen mainScreen].bounds.size.width
@@ -9,7 +10,7 @@
 #define kIs_iphone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define kIs_iPhoneX kScreenWidth >=375.0f && kScreenHeight >=812.0f&& kIs_iphone
 
-@interface ViewController ()<LSBluetoothManagerDelegate,UITableViewDelegate,UITableViewDataSource> {
+@interface ViewController ()<LSBluetoothManagerDelegate,UITableViewDelegate,UITableViewDataSource,SPDateTimePickerViewDelegate> {
     
     UITextField *contentTextField;
 }

@@ -49,9 +49,6 @@
 //清除历史记录 发送1 成功 0失败
 - (void)onClearHistoryDataStateChanged:(int)status;
 
-//中断历史记录 发送1 成功 0失败
-- (void)onStopHistoryDataStateChanged:(int)status;
-
 //发送ack发送1 成功 0失败
 - (void)onSendAckChanged:(int)status;
 
@@ -141,8 +138,6 @@
 // 删除历史数据
 - (void)clearHistoryData;
 
-// APP主动发送历史数据中断指令
-- (void)InterruptHistory;
 
 // 设置提醒任务
 - (void)setRemindTask:(NSString *_Nullable)startTime endTime:(NSString *_Nullable)endTime  hourTime:(NSString *_Nullable)hours;

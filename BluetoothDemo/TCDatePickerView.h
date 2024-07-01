@@ -26,7 +26,7 @@ typedef enum : NSUInteger {
 
  */
 
--(void)didClickFinishDateTimePickerView:(NSString*)date;
+-(void)didClickFinishDateTimePickerView2:(NSString*)date;
 
 /**
 
