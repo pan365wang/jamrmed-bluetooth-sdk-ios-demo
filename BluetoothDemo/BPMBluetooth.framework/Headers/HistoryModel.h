@@ -40,11 +40,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,assign) NSInteger second;
 //测量状态（0x00：升压  0x01：降压 0x02：双模 ）
 @property (nonatomic ,assign) NSInteger measurementStatus;
-//电量 255 代表NONE 充电模式下无电量返回
+//电量
 @property (nonatomic ,assign) NSInteger electricityLevel;
 //供电模式
 @property (nonatomic ,assign) NSInteger powerSupplyMode;
-//蓝牙信号强度 255 代表NONE 无蓝牙信号。
+//蓝牙信号强度
 @property (nonatomic ,assign) NSInteger bluetoothSignalStrength;
 
 @end

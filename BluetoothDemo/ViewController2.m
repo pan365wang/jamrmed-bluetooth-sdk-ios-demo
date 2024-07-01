@@ -218,11 +218,11 @@
 - (void)getSentive:(UIButton *)sender {
     self.pickerView = [[LPPickView alloc]init];
     self.pickerView.type = 2;
-    self.pickerView.sexArr = @[@"user 1",@"user 2"];
+    self.pickerView.sexArr = @[@"user 1",@"user 2",@"user 3",@"user 4"];
     __block ViewController2 *strongBlock = self;
     self.pickerView.config = ^(NSString *name,NSString *idStr) {
         strongBlock->selIndex = 6;
-        [strongBlock->manager getHistoryData:idStr.integerValue==1?1:2];
+        [strongBlock->manager getHistoryData:idStr.integerValue];
     };
     [self.view addSubview:self.pickerView];
 }

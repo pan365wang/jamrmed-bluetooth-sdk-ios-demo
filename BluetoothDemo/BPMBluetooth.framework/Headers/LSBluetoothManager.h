@@ -138,7 +138,6 @@
 // 删除历史数据
 - (void)clearHistoryData;
 
-
 // 设置提醒任务
 - (void)setRemindTask:(NSString *_Nullable)startTime endTime:(NSString *_Nullable)endTime  hourTime:(NSString *_Nullable)hours;
 
