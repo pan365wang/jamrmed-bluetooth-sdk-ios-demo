@@ -133,6 +133,8 @@
 // 获取历史数据
 //user == 1 用户1
 //user == 2 用户2
+//user == 3 用户3
+//user == 4 用户4
 - (void)getHistoryData:(NSInteger)user;
 
 // 删除历史数据
