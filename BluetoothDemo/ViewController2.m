@@ -5,7 +5,6 @@
 #import "HistoryViewController.h"
 #import "TCDatePickerView.h"
 #import "LPPickView.h"
-#import "SPDateTimePickerView.h"
 
 #define kScreenHeight     [UIScreen mainScreen].bounds.size.height
 #define kScreenWidth      [UIScreen mainScreen].bounds.size.width
@@ -13,7 +12,7 @@
 #define kIs_iphone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define kIs_iPhoneX kScreenWidth >=375.0f && kScreenHeight >=812.0f&& kIs_iphone
 
-@interface ViewController2 ()<LSBluetoothManagerDelegate,DateTimePickerViewDelegate,SPDateTimePickerViewDelegate>
+@interface ViewController2 ()<LSBluetoothManagerDelegate,DateTimePickerViewDelegate>
 {
     LSBluetoothManager *manager;
     CBPeripheral * connectedperipheral;
@@ -170,10 +169,10 @@
 
 //发送时间
 - (void)setTime:(UIButton *)sender {
-    SPDateTimePickerView *pickerView = [[SPDateTimePickerView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,  [UIScreen mainScreen].bounds.size.height)];
-    pickerView.pickerViewMode = 5;
+    TCDatePickerView *pickerView = [[TCDatePickerView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,  [UIScreen mainScreen].bounds.size.height)];
+    pickerView.pickerViewMode = DatePickerViewDateTimeModeSecond;
     pickerView.delegate = self;
-    pickerView.title = @"时间选择器";
+    pickerView.titleL.text = @"时间选择器";
     [self.view addSubview:pickerView];
     [pickerView showDateTimePickerView];
 //    TCDatePickerView *picker = [[TCDatePickerView alloc] init];
@@ -450,9 +449,12 @@
     } else if (selIndex == 200) {
         endTime = date;
         [self selTime3];
-    } else {
+    } else if (selIndex == 300){
         hourMin = date;
         [manager setRemindTask:startTime endTime:endTime hourTime:hourMin];
+    } else {
+        NSString *dateTime = date;
+        [manager sendDate:dateTime];
     }
 }
 

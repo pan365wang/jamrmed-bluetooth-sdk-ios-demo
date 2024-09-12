@@ -213,6 +213,10 @@
 
         return 5;
 
+    }else if (self.pickerViewMode == DatePickerViewDateTimeModeSecond){
+        
+        return 6;
+
     }else if (self.pickerViewMode == DatePickerViewDateMode){
 
         return 3;
@@ -282,6 +286,69 @@
 
                 break;
 
+                
+
+            default:
+
+                break;
+
+        }
+
+    }else if (self.pickerViewMode == DatePickerViewDateTimeModeSecond) {
+        
+        switch (component) {
+            case 0:
+
+            {
+                return yearRange;
+
+            }
+
+                break;
+
+            case 1:
+
+            {
+                return 12;
+
+            }
+
+                break;
+
+            case 2:
+
+            {
+                return dayRange;
+
+            }
+
+                break;
+
+            case 3:
+
+            {
+                return 24;
+
+            }
+
+                break;
+
+            case 4:
+
+            {
+                return 60;
+
+            }
+
+                break;
+            case 5:
+
+            {
+                return 60;
+
+            }
+
+                break;
                 
 
             default:
@@ -441,6 +508,34 @@
 
         
 
+    }else   if (self.pickerViewMode == DatePickerViewDateTimeModeSecond) {
+        
+        [self.pickerView selectRow:year-startYear inComponent:0 animated:NO];
+
+        [self.pickerView selectRow:month-1 inComponent:1 animated:NO];
+
+        [self.pickerView selectRow:day-1 inComponent:2 animated:NO];
+
+        [self.pickerView selectRow:hour inComponent:3 animated:NO];
+
+        [self.pickerView selectRow:minute inComponent:4 animated:NO];
+
+        
+
+        [self pickerView:self.pickerView didSelectRow:year-startYear inComponent:0];
+
+        [self pickerView:self.pickerView didSelectRow:month-1 inComponent:1];
+
+        [self pickerView:self.pickerView didSelectRow:day-1 inComponent:2];
+
+        [self pickerView:self.pickerView didSelectRow:hour inComponent:3];
+
+        [self pickerView:self.pickerView didSelectRow:minute inComponent:4];
+
+        
+
+        
+
     }else if (self.pickerViewMode == DatePickerViewDateMode){
 
         [self.pickerView selectRow:year-startYear inComponent:0 animated:NO];
@@ -563,6 +658,79 @@
 
         }
 
+    }else if (self.pickerViewMode == DatePickerViewDateTimeModeSecond) {
+        
+        switch (component) {
+            case 0:
+
+            {
+                label.text=[NSString stringWithFormat:@"%ld年",(long)(startYear + row)];
+
+            }
+
+                break;
+
+            case 1:
+
+            {
+                label.text=[NSString stringWithFormat:@"%ld月",(long)row+1];
+
+            }
+
+                break;
+
+            case 2:
+
+            {
+                
+
+                label.text=[NSString stringWithFormat:@"%ld日",(long)row+1];
+
+            }
+
+                break;
+
+            case 3:
+
+            {
+                label.textAlignment=NSTextAlignmentRight;
+
+                label.text=[NSString stringWithFormat:@"%ld时",(long)row];
+
+            }
+
+                break;
+
+            case 4:
+
+            {
+                label.textAlignment=NSTextAlignmentRight;
+
+                label.text=[NSString stringWithFormat:@"%ld分",(long)row];
+
+            }
+
+                break;
+
+            case 5:
+
+            {
+                label.textAlignment=NSTextAlignmentRight;
+
+                label.text=[NSString stringWithFormat:@"%ld秒",(long)row];
+
+            }
+
+                break;
+            
+                
+
+            default:
+
+                break;
+
+        }
+
     }else if (self.pickerViewMode == DatePickerViewDateMode){
 
         switch (component) {
@@ -646,6 +814,10 @@
     if (self.pickerViewMode == DatePickerViewDateTimeMode) {
 
         return ([UIScreen mainScreen].bounds.size.width-40)/5;
+
+    }else if (self.pickerViewMode == DatePickerViewDateTimeModeSecond) {
+        
+        return ([UIScreen mainScreen].bounds.size.width-40)/6;
 
     }else if (self.pickerViewMode == DatePickerViewDateMode){
 
@@ -738,6 +910,82 @@
         
 
         _string =[NSString stringWithFormat:@"%ld%.2ld%.2ld %.2ld:%.2ld",selectedYear,selectedMonth,selectedDay,selectedHour,selectedMinute];
+
+    }else if (self.pickerViewMode == DatePickerViewDateTimeModeSecond) {
+        
+        switch (component) {
+            case 0:
+
+            {
+                selectedYear=startYear + row;
+
+                dayRange=[self isAllDay:selectedYear andMonth:selectedMonth];
+
+                [self.pickerView reloadComponent:2];
+
+            }
+
+                break;
+
+            case 1:
+
+            {
+                selectedMonth=row+1;
+
+                dayRange=[self isAllDay:selectedYear andMonth:selectedMonth];
+
+                [self.pickerView reloadComponent:2];
+
+            }
+
+                break;
+
+            case 2:
+
+            {
+                selectedDay=row+1;
+
+            }
+
+                break;
+
+            case 3:
+
+            {
+                selectedHour=row;
+
+            }
+
+                break;
+
+            case 4:
+
+            {
+                selectedMinute=row;
+
+            }
+
+                break;
+
+            case 5:
+
+            {
+                selectedSecond=row;
+
+            }
+
+                break;
+
+
+            default:
+
+                break;
+
+        }
+
+        
+
+        _string =[NSString stringWithFormat:@"%ld%.2ld%.2ld %.2ld:%.2ld:%.2ld",selectedYear,selectedMonth,selectedDay,selectedHour,selectedMinute,selectedSecond];
 
     }else if (self.pickerViewMode == DatePickerViewDateMode){
 
